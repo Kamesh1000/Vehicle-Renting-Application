@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.vra.entity.Image;
+import org.springframework.web.multipart.MultipartFile;
 import com.example.vra.entity.User;
 import com.example.vra.service.UserService;
 import com.example.vra.util.ResponseStructure;
@@ -29,8 +28,8 @@ private final UserService userService;
 		return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "User Created", user));
 	}
 	@GetMapping("/add-image")
-	public ResponseEntity<ResponseStructure<User>> updatePhoto(@RequestParam int userId,@RequestParam Image image){
-		User user = userService.updatePhoto(userId,image);
+	public ResponseEntity<ResponseStructure<User>> updatePhoto(@RequestParam int userId,@RequestParam MultipartFile image,@RequestParam String contentType){
+		User user = userService.updatePhoto(userId,image,contentType);
 		return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "User Created", user));
 	}
 }
