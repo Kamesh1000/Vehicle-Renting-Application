@@ -1,35 +1,15 @@
-package com.example.vra.entity;
+package com.example.vra.responsedto;
 
 import com.example.vra.enums.Role;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-
-@Entity
-public class User {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserResponse {
 	private int userId;
 	private String userName;
 	private String userEmail;
 	private String userPhoneNumber;
-	private String userPassword;
 	private Role userRole;
+	private String userProfileLink;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	private Image profilePicture;
-	
-	public Image getImage() {
-		return profilePicture;
-	}
-	public void setImage(Image profilePicture) {
-		this.profilePicture = profilePicture;
-	}
 	public int getUserId() {
 		return userId;
 	}
@@ -54,18 +34,16 @@ public class User {
 	public void setUserPhoneNumber(String userPhoneNumber) {
 		this.userPhoneNumber = userPhoneNumber;
 	}
-	public String getUserPassword() {
-		return userPassword;
-	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
 	public Role getUserRole() {
 		return userRole;
 	}
 	public void setUserRole(Role userRole) {
 		this.userRole = userRole;
 	}
-	
+	public String getUserProfileLink() {
+		return userProfileLink;
+	}
+	public void setUserProfileLink(String userProfileLink) {
+		this.userProfileLink = userProfileLink;
+	}
 }
-
