@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.vra.entity.Image;
+import com.example.vra.exception.ImageNotFoundException;
+import com.example.vra.exception.UserNotFoundException;
 import com.example.vra.repository.ImageRepository;
 import com.example.vra.repository.UserRepository;
 
@@ -40,13 +42,13 @@ public class ImageService {
 			image.setContentType(file.getContentType());
 			image.setImageBytes(file.getBytes());
 			return image;
-		} catch (IOException e) {
-				throw new RuntimeException();
+		} catch (ImageNotFoundException | IOException exception) {
+				throw new ImageNotFoundException("Enter Valid Image Id");
 		}
 	}
 
 	public Image getImage(int imageId) {
-		return imageRepository.findById(imageId).orElseThrow();
+		return imageRepository.findById(imageId).orElseThrow(()->new UserNotFoundException("Enter Valid User Id"));
 	}
 
 }
