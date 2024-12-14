@@ -25,15 +25,21 @@ public class ImageService {
 	public void uploadUserProfilePicture(int userId, MultipartFile file) {
 		
 		userRepository.findById(userId)
-		.map(user -> {
-			
+		.ifPresentOrElse(user -> {
+			Image exImage = user.getImage();
+				
 			Image image = this.createImage(file);
 			image = imageRepository.save(image);
 			
 			user.setImage(image);
-			return userRepository.save(user);
+			userRepository.save(user);
 			
-		}).orElseThrow(() -> new RuntimeException(""));
+			if(exImage != null)
+				imageRepository.delete(exImage);
+			
+		}, () -> {
+			throw new RuntimeException();
+		});
 	}
 	
 	private Image createImage(MultipartFile file) {
