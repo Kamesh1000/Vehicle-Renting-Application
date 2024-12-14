@@ -5,7 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.example.vra.entity.User;
+import com.example.vra.requestdto.UserRequest;
+import com.example.vra.responsedto.UserResponse;
 import com.example.vra.service.UserService;
 import com.example.vra.util.ResponseStructure;
 
@@ -20,8 +21,8 @@ private final UserService userService;
 	}
 	
 	@PostMapping("/add-user")
-	public ResponseEntity<ResponseStructure<User>> addUser(@RequestBody User user) {
-		user = userService.addUser(user);
-		return ResponseEntity.status(HttpStatus.CREATED).body(ResponseStructure.create(HttpStatus.CREATED.value(), "User Created", user));
+	public ResponseEntity<ResponseStructure<UserResponse>> addUser(@RequestBody UserRequest request) {
+		return ResponseEntity.status(HttpStatus.CREATED).
+				body(ResponseStructure.create(HttpStatus.CREATED.value(), "User Created",userService.addUser(request)));
 	}
 }
