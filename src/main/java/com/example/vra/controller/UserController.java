@@ -27,6 +27,7 @@ private final UserService userService;
 		return ResponseEntity.status(HttpStatus.CREATED).
 				body(ResponseStructure.create(HttpStatus.CREATED.value(), "User Created",userService.addUser(request)));
 	}
+	
 	@GetMapping("/get-user")
 	public ResponseEntity<ResponseStructure<UserResponse>> getUser(@RequestParam int userId){
 		return ResponseEntity.status(HttpStatus.CREATED).

@@ -42,7 +42,7 @@ public class ImageService {
 			image.setContentType(file.getContentType());
 			image.setImageBytes(file.getBytes());
 			return image;
-		} catch (ImageNotFoundException | IOException exception) {
+		} catch (IOException e) {
 				throw new ImageNotFoundException("Enter Valid Image Id");
 		}
 	}

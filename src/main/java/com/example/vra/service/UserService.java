@@ -1,9 +1,7 @@
 package com.example.vra.service;
 
 import org.springframework.stereotype.Service;
-
 import com.example.vra.entity.Image;
-import com.example.vra.entity.User;
 import com.example.vra.exception.UserNotFoundException;
 import com.example.vra.mapper.UserMapper;
 import com.example.vra.repository.UserRepository;
