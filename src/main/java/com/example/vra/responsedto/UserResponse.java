@@ -8,6 +8,7 @@ public class UserResponse {
 	private String userEmail;
 	private String userPhoneNumber;
 	private Role userRole;
+	private String userProfileLink;
 	
 	public int getUserId() {
 		return userId;
@@ -38,5 +39,11 @@ public class UserResponse {
 	}
 	public void setUserRole(Role userRole) {
 		this.userRole = userRole;
+	}
+	public String getUserProfileLink() {
+		return userProfileLink;
+	}
+	public void setUserProfileLink(String userProfileLink) {
+		this.userProfileLink = userProfileLink;
 	}
 }

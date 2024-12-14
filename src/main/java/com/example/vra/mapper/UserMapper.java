@@ -25,6 +25,7 @@ public class UserMapper {
 		userResponse.setUserEmail(user.getUserEmail());
 		userResponse.setUserPhoneNumber(user.getUserPhoneNumber());
 		userResponse.setUserRole(user.getUserRole());
+
 		return userResponse;
 	}
 }
