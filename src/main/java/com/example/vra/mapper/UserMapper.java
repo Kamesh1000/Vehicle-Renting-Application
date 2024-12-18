@@ -9,8 +9,7 @@ import com.example.vra.responsedto.UserResponse;
 @Component
 public class UserMapper {
 
-	public User mapToUser(UserRequest request) {
-		User user=new User();
+	public User mapToUser(UserRequest request,User user) {
 		user.setUserName(request.getUserName());
 		user.setUserPassword(request.getUserPassword());
 		user.setUserEmail(request.getUserEmail());
